@@ -17,7 +17,13 @@ function XPProgressBar({ levelInfo }) {
         <div
           className="progressFill"
           style={{ width: `${levelInfo.progressPercent}%` }}
-        />
+        >
+          <span />
+        </div>
+      </div>
+
+      <div className="xpHint">
+        {levelInfo.xpForNextLevel - levelInfo.currentLevelXp} XP until the next level
       </div>
     </section>
   );

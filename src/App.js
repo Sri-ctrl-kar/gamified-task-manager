@@ -10,6 +10,7 @@ const STARTER_TASKS = [
     id: crypto.randomUUID(),
     title: 'Finish React component notes',
     difficulty: 'Easy',
+    category: 'Study',
     xp: 20,
     completed: false
   },
@@ -17,6 +18,7 @@ const STARTER_TASKS = [
     id: crypto.randomUUID(),
     title: 'Build reusable TaskItem card',
     difficulty: 'Medium',
+    category: 'Build',
     xp: 35,
     completed: false
   },
@@ -24,6 +26,7 @@ const STARTER_TASKS = [
     id: crypto.randomUUID(),
     title: 'Test localStorage persistence',
     difficulty: 'Medium',
+    category: 'Debug',
     xp: 35,
     completed: false
   }
@@ -34,7 +37,9 @@ function App() {
   const [totalXp, setTotalXp] = useLocalStorage('gtm_total_xp', 0);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [newTaskDifficulty, setNewTaskDifficulty] = useState('Easy');
+  const [newTaskCategory, setNewTaskCategory] = useState('Study');
   const [levelMessage, setLevelMessage] = useState(null);
+  const [xpBurst, setXpBurst] = useState(null);
 
   const levelInfo = useLevelSystem(totalXp);
 
@@ -54,13 +59,16 @@ function App() {
       id: crypto.randomUUID(),
       title: trimmedTitle,
       difficulty: newTaskDifficulty,
+      category: newTaskCategory,
       xp: difficultyOptions[newTaskDifficulty],
-      completed: false
+      completed: false,
+      createdAt: new Date().toISOString()
     };
 
     setTasks((currentTasks) => [task, ...currentTasks]);
     setNewTaskTitle('');
     setNewTaskDifficulty('Easy');
+    setNewTaskCategory('Study');
   }
 
   function completeTask(taskId) {
@@ -76,6 +84,10 @@ function App() {
       )
     );
     setTotalXp(nextXp);
+    setXpBurst({
+      id: taskId,
+      xp: finishedTask.xp
+    });
 
     if (didLevelUp) {
       setLevelMessage({
@@ -83,6 +95,10 @@ function App() {
         earnedXp: finishedTask.xp
       });
     }
+
+    window.setTimeout(() => {
+      setXpBurst(null);
+    }, 900);
   }
 
   function deleteTask(taskId) {
@@ -96,8 +112,11 @@ function App() {
         levelInfo={levelInfo}
         newTaskTitle={newTaskTitle}
         newTaskDifficulty={newTaskDifficulty}
+        newTaskCategory={newTaskCategory}
+        xpBurst={xpBurst}
         onTitleChange={setNewTaskTitle}
         onDifficultyChange={setNewTaskDifficulty}
+        onCategoryChange={setNewTaskCategory}
         onAddTask={addTask}
         onCompleteTask={completeTask}
         onDeleteTask={deleteTask}
