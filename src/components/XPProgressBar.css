@@ -1,0 +1,44 @@
+.xpPanel {
+  padding: 18px;
+  border: 1px solid #ddd3bf;
+  border-radius: 8px;
+  background: #fffdf7;
+  box-shadow: 0 14px 30px rgba(31, 39, 41, 0.08);
+}
+
+.xpTopRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.xpTopRow h2,
+.levelLabel {
+  margin: 0;
+}
+
+.levelLabel {
+  color: #a14921;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.xpTopRow strong {
+  white-space: nowrap;
+}
+
+.progressTrack {
+  height: 16px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e4dac8;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #236b73, #6f8d47, #db772a);
+  transition: width 220ms ease;
+}

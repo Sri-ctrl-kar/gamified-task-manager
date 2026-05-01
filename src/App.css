@@ -1,0 +1,8 @@
+.appShell {
+  min-height: 100vh;
+  background:
+    linear-gradient(135deg, rgba(30, 85, 92, 0.16), transparent 35%),
+    linear-gradient(225deg, rgba(219, 119, 42, 0.14), transparent 35%),
+    #f6f2e8;
+  color: #1f2729;
+}

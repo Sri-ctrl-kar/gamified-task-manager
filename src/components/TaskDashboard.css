@@ -1,0 +1,146 @@
+.dashboard {
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 36px 0;
+}
+
+.dashboardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.dashboardHeader h1 {
+  margin: 4px 0 8px;
+  font-size: 42px;
+  line-height: 1.05;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #a14921;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.introText {
+  max-width: 560px;
+  margin: 0;
+  color: #4b5b5e;
+}
+
+.badgeImage {
+  width: 112px;
+  height: 112px;
+}
+
+.taskForm {
+  margin-top: 22px;
+  padding: 18px;
+  background: #fffdf7;
+  border: 1px solid #ddd3bf;
+  border-radius: 8px;
+}
+
+.taskForm label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px 120px;
+  gap: 10px;
+}
+
+.formRow input,
+.formRow select {
+  min-height: 42px;
+  border: 1px solid #c9bea8;
+  border-radius: 6px;
+  padding: 0 12px;
+  font: inherit;
+  background: #ffffff;
+}
+
+.formRow button {
+  border: 0;
+  border-radius: 6px;
+  background: #236b73;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.formRow button:hover {
+  background: #18545b;
+}
+
+.taskStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.taskStats span {
+  padding: 7px 10px;
+  border: 1px solid #c9bea8;
+  border-radius: 999px;
+  background: rgba(255, 253, 247, 0.72);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.taskColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.taskColumns h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+
+.taskList {
+  display: grid;
+  gap: 12px;
+}
+
+.emptyMessage {
+  margin: 0;
+  padding: 18px;
+  border: 1px dashed #b8aa91;
+  border-radius: 8px;
+  color: #5b6466;
+  background: rgba(255, 253, 247, 0.55);
+}
+
+@media (max-width: 760px) {
+  .dashboardHeader {
+    align-items: flex-start;
+  }
+
+  .dashboardHeader h1 {
+    font-size: 34px;
+  }
+
+  .badgeImage {
+    width: 78px;
+    height: 78px;
+  }
+
+  .formRow,
+  .taskColumns {
+    grid-template-columns: 1fr;
+  }
+
+  .formRow button {
+    min-height: 42px;
+  }
+}

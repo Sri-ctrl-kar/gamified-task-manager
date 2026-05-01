@@ -1,0 +1,45 @@
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(31, 39, 41, 0.45);
+}
+
+.rewardModal {
+  width: min(420px, 100%);
+  padding: 24px;
+  border-radius: 8px;
+  background: #fffdf7;
+  border: 1px solid #ddd3bf;
+  box-shadow: 0 22px 50px rgba(31, 39, 41, 0.22);
+  text-align: center;
+}
+
+.rewardKicker {
+  margin: 0 0 8px;
+  color: #a14921;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.rewardModal h2 {
+  margin: 0 0 10px;
+}
+
+.rewardModal p {
+  color: #4b5b5e;
+}
+
+.rewardModal button {
+  min-height: 40px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 6px;
+  background: #236b73;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}

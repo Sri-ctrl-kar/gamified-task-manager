@@ -1,0 +1,66 @@
+.taskItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 92px;
+  padding: 16px;
+  border: 1px solid #ddd3bf;
+  border-left: 5px solid #db772a;
+  border-radius: 8px;
+  background: #fffdf7;
+  box-shadow: 0 10px 24px rgba(31, 39, 41, 0.08);
+}
+
+.taskItemCompleted {
+  border-left-color: #6f8d47;
+  opacity: 0.72;
+}
+
+.taskItem h3 {
+  margin: 0 0 5px;
+  font-size: 17px;
+}
+
+.taskItem p {
+  margin: 0;
+  color: #5b6466;
+  font-size: 14px;
+}
+
+.taskActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.taskActions button {
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.completeButton {
+  background: #236b73;
+  color: #ffffff;
+}
+
+.deleteButton {
+  background: #ffffff;
+  color: #9c3217;
+  border-color: #d9a391 !important;
+}
+
+@media (max-width: 560px) {
+  .taskItem {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .taskActions {
+    justify-content: flex-end;
+  }
+}
