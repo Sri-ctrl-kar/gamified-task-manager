@@ -1,8 +1,11 @@
 .appShell {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(240, 184, 74, 0.24), transparent 30%),
-    radial-gradient(circle at 90% 12%, rgba(49, 128, 135, 0.2), transparent 28%),
-    linear-gradient(135deg, #172429 0%, #263d3d 48%, #efe2c4 48%, #f8f1df 100%);
-  color: #1f2729;
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 20% 0%, rgba(201, 132, 38, 0.24), transparent 34%),
+    radial-gradient(circle at 85% 18%, rgba(106, 135, 69, 0.2), transparent 30%),
+    linear-gradient(135deg, #0b1114 0%, #152021 46%, #2b2f26 100%);
+  background-size: 42px 42px, 42px 42px, auto, auto, auto;
+  color: #edf2e6;
 }

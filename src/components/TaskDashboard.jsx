@@ -24,16 +24,15 @@ function TaskDashboard({
   const completionPercent =
     tasks.length > 0 ? Math.round((completedTasks.length / tasks.length) * 100) : 0;
   const playerTitle =
-    levelInfo.level >= 5 ? 'Quest Champion' : levelInfo.level >= 3 ? 'Task Ranger' : 'Apprentice Planner';
+    levelInfo.level >= 5 ? 'Elite Operator' : levelInfo.level >= 3 ? 'Field Specialist' : 'Recruit Planner';
 
   return (
     <section className="dashboard">
       <header className="dashboardHeader">
         <div>
-          <p className="eyebrow">Student capstone quest</p>
-          <h1>Quest Board</h1>
+          <h1>Mission Board</h1>
           <p className="introText">
-            Plan missions, collect XP, and build a streak of completed work.
+            Deploy tasks, clear objectives, and climb the XP ranks.
           </p>
         </div>
         <div className="playerCard">
@@ -49,7 +48,7 @@ function TaskDashboard({
 
       <div className="gameStats" aria-label="Player statistics">
         <article>
-          <span>Quest clear</span>
+          <span>Mission clear</span>
           <strong>{completionPercent}%</strong>
         </article>
         <article>
@@ -63,7 +62,7 @@ function TaskDashboard({
       </div>
 
       <form className="taskForm" onSubmit={onAddTask}>
-        <label htmlFor="taskTitle">New quest</label>
+        <label htmlFor="taskTitle">New mission</label>
         <div className="formRow">
           <input
             id="taskTitle"
@@ -96,14 +95,14 @@ function TaskDashboard({
       </form>
 
       <div className="taskStats" aria-label="Task totals">
-        <span>{activeTasks.length} active</span>
-        <span>{completedTasks.length} completed</span>
+        <span>{activeTasks.length} active ops</span>
+        <span>{completedTasks.length} cleared</span>
         <span>{levelInfo.totalXp} total XP</span>
       </div>
 
       <div className="taskColumns">
         <div>
-          <h2>Active Tasks</h2>
+          <h2>Active Operations</h2>
           <div className="taskList">
             {activeTasks.length > 0 ? (
               activeTasks.map((task) => (
@@ -116,13 +115,13 @@ function TaskDashboard({
                 />
               ))
             ) : (
-              <p className="emptyMessage">No active tasks. Add a quest to begin.</p>
+              <p className="emptyMessage">No active operations. Add a mission to deploy.</p>
             )}
           </div>
         </div>
 
         <div>
-          <h2>Finished</h2>
+          <h2>Cleared Objectives</h2>
           <div className="taskList">
             {completedTasks.length > 0 ? (
               completedTasks.map((task) => (
@@ -135,7 +134,7 @@ function TaskDashboard({
                 />
               ))
             ) : (
-              <p className="emptyMessage">Completed quests will appear here.</p>
+              <p className="emptyMessage">Cleared objectives will appear here.</p>
             )}
           </div>
         </div>
