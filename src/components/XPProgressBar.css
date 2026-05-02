@@ -1,11 +1,9 @@
 .xpPanel {
   padding: 18px;
-  border: 1px solid rgba(217, 164, 82, 0.32);
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(22, 34, 33, 0.96), rgba(9, 15, 18, 0.96)),
-    #10191b;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
+  background: var(--panel);
+  box-shadow: var(--shadow);
 }
 
 .xpTopRow {
@@ -22,33 +20,33 @@
 }
 
 .levelLabel {
-  color: #d9a452;
+  color: var(--accent);
   font-size: 14px;
   font-weight: 700;
 }
 
 .xpTopRow strong {
   white-space: nowrap;
-  color: #f5f1df;
+  color: var(--text);
 }
 
 .xpTopRow h2 {
-  color: #f5f1df;
+  color: var(--text);
 }
 
 .progressTrack {
   height: 20px;
   overflow: hidden;
   border-radius: 999px;
-  border: 1px solid rgba(217, 164, 82, 0.36);
-  background: #11191a;
+  border: 1px solid var(--border);
+  background: var(--panel-strong);
 }
 
 .progressFill {
   position: relative;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #2c6d73, #78a85f, #d9a452);
+  background: linear-gradient(90deg, var(--accent-strong), var(--success), var(--accent));
   transition: width 220ms ease;
   overflow: hidden;
 }
@@ -66,7 +64,7 @@
 
 .xpHint {
   margin-top: 10px;
-  color: #aeb8ad;
+  color: var(--muted);
   font-size: 14px;
   font-weight: 700;
 }

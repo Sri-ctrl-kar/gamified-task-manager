@@ -5,13 +5,11 @@
   gap: 14px;
   min-height: 92px;
   padding: 16px;
-  border: 1px solid rgba(217, 164, 82, 0.26);
+  border: 1px solid var(--border);
   border-left: 6px solid #db772a;
   border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(26, 38, 36, 0.96), rgba(11, 17, 20, 0.96)),
-    #10191b;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+  background: var(--panel);
+  box-shadow: var(--shadow);
   overflow: hidden;
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
@@ -21,13 +19,13 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(110deg, transparent, rgba(217, 164, 82, 0.16), transparent);
+  background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.22), transparent);
   transform: translateX(-120%);
 }
 
 .taskItem:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 14px 28px rgba(16, 25, 27, 0.16);
 }
 
 .taskItem:hover::before {
@@ -35,27 +33,27 @@
 }
 
 .difficultyEasy {
-  border-left-color: #78a85f;
+  border-left-color: var(--success);
 }
 
 .difficultyMedium {
-  border-left-color: #d9a452;
+  border-left-color: var(--accent);
 }
 
 .difficultyHard {
-  border-left-color: #b9432f;
+  border-left-color: var(--danger);
 }
 
 .taskItemCompleted {
   border-left-color: #6f8d47;
   opacity: 0.72;
-  background: rgba(19, 34, 25, 0.88);
+  background: var(--panel-strong);
 }
 
 .taskItem h3 {
   margin: 4px 0 7px;
   font-size: 17px;
-  color: #f5f1df;
+  color: var(--text);
 }
 
 .questIcon {
@@ -63,12 +61,10 @@
   place-items: center;
   width: 58px;
   height: 58px;
-  border: 1px solid rgba(217, 164, 82, 0.34);
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(217, 164, 82, 0.18), rgba(111, 141, 71, 0.1)),
-    #0b1114;
-  color: #d9a452;
+  background: var(--panel-strong);
+  color: var(--accent);
   font-size: 11px;
   font-weight: 800;
 }
@@ -94,13 +90,13 @@
 
 .questTopLine span {
   padding: 4px 8px;
-  background: rgba(217, 164, 82, 0.16);
-  color: #e4c78d;
-  border: 1px solid rgba(217, 164, 82, 0.24);
+  background: var(--panel-strong);
+  color: var(--accent);
+  border: 1px solid var(--border);
 }
 
 .rewardLine span {
-  color: #aeb8ad;
+  color: var(--muted);
 }
 
 .taskActions {
@@ -125,14 +121,14 @@
 }
 
 .completeButton {
-  background: #6f8d47;
+  background: var(--success);
   color: #f7f8ef;
 }
 
 .deleteButton {
   background: transparent;
-  color: #e49c8f;
-  border-color: rgba(185, 67, 47, 0.5) !important;
+  color: var(--danger);
+  border-color: var(--border) !important;
 }
 
 .xpBurst {
@@ -142,7 +138,7 @@
   z-index: 1;
   padding: 5px 9px;
   border-radius: 999px;
-  background: #d9a452;
+  background: var(--accent);
   color: #101312;
   font-size: 13px;
   font-weight: 800;

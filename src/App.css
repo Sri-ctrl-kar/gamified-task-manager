@@ -1,11 +1,108 @@
 .appShell {
+  --bg: #eef1e8;
+  --panel: #ffffff;
+  --panel-strong: #f7f3e7;
+  --text: #202927;
+  --muted: #5e6b66;
+  --border: #d8ddcf;
+  --accent: #c07a2b;
+  --accent-strong: #245f61;
+  --success: #5d813e;
+  --danger: #a94232;
+  --shadow: 0 10px 24px rgba(16, 25, 27, 0.1);
   min-height: 100vh;
+  background:
+    linear-gradient(rgba(36, 95, 97, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 95, 97, 0.04) 1px, transparent 1px),
+    var(--bg);
+  background-size: 36px 36px;
+  color: var(--text);
+}
+
+.appShell.darkMode {
+  --bg: #101719;
+  --panel: #182224;
+  --panel-strong: #202c2b;
+  --text: #edf2e6;
+  --muted: #a6b1aa;
+  --border: #34413e;
+  --accent: #d6a04d;
+  --accent-strong: #74a2a6;
+  --success: #78a85f;
+  --danger: #d06b58;
+  --shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
   background:
     linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    radial-gradient(circle at 20% 0%, rgba(201, 132, 38, 0.24), transparent 34%),
-    radial-gradient(circle at 85% 18%, rgba(106, 135, 69, 0.2), transparent 30%),
-    linear-gradient(135deg, #0b1114 0%, #152021 46%, #2b2f26 100%);
-  background-size: 42px 42px, 42px 42px, auto, auto, auto;
-  color: #edf2e6;
+    var(--bg);
+  background-size: 36px 36px;
+}
+
+.appNav {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 20px 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.appNav span,
+.appNav strong {
+  display: block;
+}
+
+.appNav span {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.appNav strong {
+  color: var(--text);
+  font-size: 20px;
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navActions a,
+.navActions button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navActions a.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.loadingRoute {
+  width: min(1100px, calc(100% - 32px));
+  margin: 24px auto;
+  color: var(--muted);
+}
+
+@media (max-width: 680px) {
+  .appNav {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .navActions {
+    flex-wrap: wrap;
+  }
 }

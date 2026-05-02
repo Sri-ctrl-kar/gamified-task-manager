@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react';
 import TaskItem from './TaskItem';
 import XPProgressBar from './XPProgressBar';
 import badgeIcon from '../assets/level-badge.svg';
@@ -5,6 +6,7 @@ import './TaskDashboard.css';
 
 function TaskDashboard({
   tasks,
+  taskStats,
   levelInfo,
   newTaskTitle,
   newTaskDifficulty,
@@ -17,14 +19,31 @@ function TaskDashboard({
   onCompleteTask,
   onDeleteTask
 }) {
-  const activeTasks = tasks.filter((task) => !task.completed);
-  const completedTasks = tasks.filter((task) => task.completed);
-  const totalPossibleXp = tasks.reduce((sum, task) => sum + task.xp, 0);
-  const earnedXp = completedTasks.reduce((sum, task) => sum + task.xp, 0);
-  const completionPercent =
-    tasks.length > 0 ? Math.round((completedTasks.length / tasks.length) * 100) : 0;
+  const [searchTerm, setSearchTerm] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('All');
+  const [sortMode, setSortMode] = useState('xp-high');
   const playerTitle =
     levelInfo.level >= 5 ? 'Elite Operator' : levelInfo.level >= 3 ? 'Field Specialist' : 'Recruit Planner';
+  const completedTasks = taskStats.completedTasks;
+
+  const activeTasks = useMemo(() => {
+    const normalizedSearch = searchTerm.trim().toLowerCase();
+
+    return taskStats.activeTasks
+      .filter((task) => {
+        const matchesSearch = task.title.toLowerCase().includes(normalizedSearch);
+        const matchesCategory =
+          categoryFilter === 'All' || (task.category || 'Study') === categoryFilter;
+
+        return matchesSearch && matchesCategory;
+      })
+      .sort((first, second) => {
+        if (sortMode === 'xp-high') return second.xp - first.xp;
+        if (sortMode === 'xp-low') return first.xp - second.xp;
+        return first.title.localeCompare(second.title);
+      });
+    // useMemo keeps filtering fast as the task list grows for the pagination/search requirement.
+  }, [categoryFilter, searchTerm, sortMode, taskStats.activeTasks]);
 
   return (
     <section className="dashboard">
@@ -49,15 +68,15 @@ function TaskDashboard({
       <div className="gameStats" aria-label="Player statistics">
         <article>
           <span>Mission clear</span>
-          <strong>{completionPercent}%</strong>
+          <strong>{taskStats.completionPercent}%</strong>
         </article>
         <article>
           <span>XP collected</span>
-          <strong>{earnedXp}/{totalPossibleXp || 0}</strong>
+          <strong>{taskStats.earnedXp}/{taskStats.totalPossibleXp || 0}</strong>
         </article>
         <article>
           <span>Open missions</span>
-          <strong>{activeTasks.length}</strong>
+          <strong>{taskStats.activeTasks.length}</strong>
         </article>
       </div>
 
@@ -94,8 +113,38 @@ function TaskDashboard({
         </div>
       </form>
 
+      <div className="taskTools">
+        <input
+          type="search"
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          placeholder="Search missions"
+          aria-label="Search missions"
+        />
+        <select
+          value={categoryFilter}
+          onChange={(event) => setCategoryFilter(event.target.value)}
+          aria-label="Filter by category"
+        >
+          <option>All</option>
+          <option>Study</option>
+          <option>Build</option>
+          <option>Debug</option>
+          <option>Review</option>
+        </select>
+        <select
+          value={sortMode}
+          onChange={(event) => setSortMode(event.target.value)}
+          aria-label="Sort missions"
+        >
+          <option value="xp-high">Highest XP</option>
+          <option value="xp-low">Lowest XP</option>
+          <option value="name">Name A-Z</option>
+        </select>
+      </div>
+
       <div className="taskStats" aria-label="Task totals">
-        <span>{activeTasks.length} active ops</span>
+        <span>{taskStats.activeTasks.length} active ops</span>
         <span>{completedTasks.length} cleared</span>
         <span>{levelInfo.totalXp} total XP</span>
       </div>
